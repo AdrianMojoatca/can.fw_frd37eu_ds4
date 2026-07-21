@@ -21,7 +21,7 @@
   </DaveTm>
 
   <Target>
-    <TargetName>FRD37EU_DS4</TargetName>
+    <TargetName>FW_DS4</TargetName>
     <ToolsetNumber>0x4</ToolsetNumber>
     <ToolsetName>ARM-ADS</ToolsetName>
     <TargetOption>
