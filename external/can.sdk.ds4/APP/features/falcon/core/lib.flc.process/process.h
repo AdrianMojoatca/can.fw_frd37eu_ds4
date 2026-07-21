@@ -108,6 +108,13 @@ void          process_launch    ( Process_Node *process , UInt32 delay );
 
 /*==========================================================================*/
 
+
+#if defined(FW_DS4_BUILD)
+#include "core_contract_ds4_boot_handshake.h"
+#define process_create_cfg(cfg)     ((Process_Node*)core_contract_ds4_boot_api_table_get()->process_create_cfg_fn((void*)(cfg)))
+#define process_launch(proc, delay) (core_contract_ds4_boot_api_table_get()->process_launch_fn((void*)(proc),(uint32_t)(delay)))
+#endif
+
 #endif
 
 

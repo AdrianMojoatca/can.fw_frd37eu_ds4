@@ -62,6 +62,12 @@ Boolean can_per_remove     ( void *func_or_arg );
 
 /*==========================================================================*/
 
+
+#if defined(FW_DS4_BUILD)
+#include "core_contract_ds4_boot_handshake.h"
+#define can_per_init(size) (core_contract_ds4_boot_api_table_get()->can_per_init_fn((uint32_t)(size)))
+#endif
+
 #endif
 
 

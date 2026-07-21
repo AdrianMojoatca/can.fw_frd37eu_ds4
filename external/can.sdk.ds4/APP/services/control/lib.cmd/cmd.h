@@ -625,5 +625,11 @@ void cmdq_process(UInt8 *pkt,UInt8 len);
 
 /*==========================================================================*/
 
+
+#if defined(FW_DS4_BUILD)
+#include "core_contract_ds4_boot_handshake.h"
+#define cmd_lut_insert_table1(arr, size, mode) (core_contract_ds4_boot_api_table_get()->cmd_lut_insert_table1_fn((void*)(arr),(uint32_t)(size),(uint32_t)(mode)))
+#endif
+
 #endif
 

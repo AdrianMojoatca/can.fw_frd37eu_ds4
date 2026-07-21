@@ -71,6 +71,15 @@ void    can_usr_rx_filter_disable(Can_Dev_Id dev_id );
 
 /*==========================================================================*/               
 
+
+#if defined(FW_DS4_BUILD)
+#include "core_contract_ds4_boot_handshake.h"
+#define can_usr_init(setup)                (core_contract_ds4_boot_api_table_get()->can_usr_init_fn((uint32_t)(setup)))
+#define can_usr_rx_reg_fast(dev, func)     (core_contract_ds4_boot_api_table_get()->can_usr_rx_reg_fast_fn((uint32_t)(dev),(void*)(func)))
+#define can_usr_rx_reg_slow(dev, func, id) (core_contract_ds4_boot_api_table_get()->can_usr_rx_reg_slow_fn((uint32_t)(dev),(void*)(func),(uint32_t)(id)))
+#define can_usr_tx(dev, msg, fast, to)     (core_contract_ds4_boot_api_table_get()->can_usr_tx_fn((uint32_t)(dev),(void*)(msg),(uint32_t)(fast),(uint32_t)(to)))
+#endif
+
 #endif
 
 

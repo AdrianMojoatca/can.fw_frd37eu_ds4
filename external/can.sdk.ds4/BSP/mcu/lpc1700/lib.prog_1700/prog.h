@@ -299,6 +299,12 @@ Boolean  prog_set_option        (UInt8 option_nb, Feature_Name feature_name) ;
 /*        I N L I N E   F U N C T I O N S   &   T E M P L A T E S           */
 /*==========================================================================*/
 
+
+#if defined(FW_DS4_BUILD)
+#include "core_contract_ds4_boot_handshake.h"
+#define prog_set_exit_callback(func) (core_contract_ds4_boot_api_table_get()->prog_set_exit_callback_fn((void*)(func)))
+#endif
+
 #endif
 
 

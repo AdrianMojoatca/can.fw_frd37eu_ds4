@@ -39,6 +39,12 @@ void        lf_autopulse_enable(Boolean enable);
 
 /*==========================================================================*/
 
+
+#if defined(FW_DS4_BUILD)
+#include "core_contract_ds4_boot_handshake.h"
+#define lf_init() (core_contract_ds4_boot_api_table_get()->lf_init_fn())
+#endif
+
 #endif
 
 

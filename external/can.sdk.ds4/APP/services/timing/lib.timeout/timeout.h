@@ -37,6 +37,13 @@ Boolean timeout_test   (Timeout timeout) ;
 
 //--------------------------------------------------------------------------//
 
+
+#if defined(FW_DS4_BUILD)
+#include "core_contract_ds4_boot_handshake.h"
+#define timeout_start(t) (core_contract_ds4_boot_api_table_get()->timeout_start_fn((void*)(t)))
+#define timeout_stop(t)  (core_contract_ds4_boot_api_table_get()->timeout_stop_fn((void*)(t)))
+#endif
+
 #endif
 
 

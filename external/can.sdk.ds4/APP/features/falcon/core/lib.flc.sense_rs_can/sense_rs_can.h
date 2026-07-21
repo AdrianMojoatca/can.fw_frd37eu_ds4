@@ -93,6 +93,27 @@ Boolean  sense_rs_can_brake_get_status( void );
 void     sense_rs_can_set_dl_status   ( Boolean status );
 Boolean  sense_rs_can_get_dl_status   ( void );
 
+
+#if defined(FW_DS4_BUILD)
+#include "core_contract_ds4_boot_handshake.h"
+#define sense_rs_can_init(cfg)          (core_contract_ds4_boot_api_table_get()->sense_rs_can_init_fn((void*)(cfg)))
+#define sense_rs_ign_can(x)             (core_contract_ds4_boot_api_table_get()->sense_rs_ign_can_fn((uint32_t)(x)))
+#define sense_rs_brake_can(x)           (core_contract_ds4_boot_api_table_get()->sense_rs_brake_can_fn((uint32_t)(x)))
+#define sense_rs_driver_door_can(x)     (core_contract_ds4_boot_api_table_get()->sense_rs_driver_door_can_fn((uint32_t)(x)))
+#define sense_rs_other_doors_can(x)     (core_contract_ds4_boot_api_table_get()->sense_rs_other_doors_can_fn((uint32_t)(x)))
+#define sense_rs_handbrake_can(x)       (core_contract_ds4_boot_api_table_get()->sense_rs_handbrake_can_fn((uint32_t)(x)))
+#define sense_rs_hood_can(x)            (core_contract_ds4_boot_api_table_get()->sense_rs_hood_can_fn((uint32_t)(x)))
+#define sense_rs_oem_lock_can(x)        (core_contract_ds4_boot_api_table_get()->sense_rs_oem_lock_can_fn((uint32_t)(x)))
+#define sense_rs_oem_trunk_can(x)       (core_contract_ds4_boot_api_table_get()->sense_rs_oem_trunk_can_fn((uint32_t)(x)))
+#define sense_rs_oem_unlock_can(x)      (core_contract_ds4_boot_api_table_get()->sense_rs_oem_unlock_can_fn((uint32_t)(x)))
+#define sense_rs_rpm_can(x)             (core_contract_ds4_boot_api_table_get()->sense_rs_rpm_can_fn((uint32_t)(x)))
+#define sense_rs_skd_can(x)             (core_contract_ds4_boot_api_table_get()->sense_rs_skd_can_fn((uint32_t)(x)))
+#define sense_rs_speed_can(x)           (core_contract_ds4_boot_api_table_get()->sense_rs_speed_can_fn((uint32_t)(x)))
+#define sense_rs_trunk_can(x)           (core_contract_ds4_boot_api_table_get()->sense_rs_trunk_can_fn((uint32_t)(x)))
+#define sense_rs_can_brake_skip_enter() (core_contract_ds4_boot_api_table_get()->sense_rs_can_brake_skip_enter_fn())
+#define sense_rs_can_brake_skip_leave() (core_contract_ds4_boot_api_table_get()->sense_rs_can_brake_skip_leave_fn())
+#endif
+
 #endif
 
 

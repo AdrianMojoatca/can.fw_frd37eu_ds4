@@ -386,4 +386,26 @@ Boolean get_cmd_source_d2d(void);
 
 
 
+
+#if defined(FW_DS4_BUILD)
+#include "core_contract_ds4_boot_handshake.h"
+#define set_brake_source(x)     (core_contract_ds4_boot_api_table_get()->set_brake_source_fn((uint32_t)(x)))
+#define set_door_source(x)      (core_contract_ds4_boot_api_table_get()->set_door_source_fn((uint32_t)(x)))
+#define set_handbrake_source(x) (core_contract_ds4_boot_api_table_get()->set_handbrake_source_fn((uint32_t)(x)))
+#define set_ign_source(x)       (core_contract_ds4_boot_api_table_get()->set_ign_source_fn((uint32_t)(x)))
+#define set_rpm_source(x)       (core_contract_ds4_boot_api_table_get()->set_rpm_source_fn((uint32_t)(x)))
+#define set_speed_source(x)     (core_contract_ds4_boot_api_table_get()->set_speed_source_fn((uint32_t)(x)))
+#define set_trunk_source(x)     (core_contract_ds4_boot_api_table_get()->set_trunk_source_fn((uint32_t)(x)))
+#define set_rke_lock_use(x)     (core_contract_ds4_boot_api_table_get()->set_rke_lock_use_fn((uint32_t)(x)))
+#define set_rke_trunk_use(x)    (core_contract_ds4_boot_api_table_get()->set_rke_trunk_use_fn((uint32_t)(x)))
+#define set_rke_unlock_use(x)   (core_contract_ds4_boot_api_table_get()->set_rke_unlock_use_fn((uint32_t)(x)))
+#define set_rs_gwr(x)           (core_contract_ds4_boot_api_table_get()->set_rs_gwr_fn((uint32_t)(x)))
+#define set_rs_ign(x)           (core_contract_ds4_boot_api_table_get()->set_rs_ign_fn((uint32_t)(x)))
+#define set_rs_start(x)         (core_contract_ds4_boot_api_table_get()->set_rs_start_fn((uint32_t)(x)))
+#define get_ign_status()        (core_contract_ds4_boot_api_table_get()->get_ign_status_fn())
+#define get_rs_gwr()            (core_contract_ds4_boot_api_table_get()->get_rs_gwr_fn())
+#define get_ss_lock()           (core_contract_ds4_boot_api_table_get()->get_ss_lock_fn())
+#define get_trunk_status()      (core_contract_ds4_boot_api_table_get()->get_trunk_status_fn())
+#endif
+
 #endif

@@ -60,5 +60,13 @@ extern UInt16  dbgtx_nr,dbgtx_nw;
 
 /*==========================================================================*/
 
+#if defined(FW_DS4_BUILD)
+/* Thin-FW: route TRACE/dbg_print to CORE's trace fn via the API table
+   (dbgcli.c is not compiled in the thin FW). */
+#include "core_contract_ds4_boot_handshake.h"
+#undef  dbg_print
+#define dbg_print(args...) (core_contract_ds4_boot_api_table_get()->trace_print(args))
+#endif /* FW_DS4_BUILD */
+
 #endif
 

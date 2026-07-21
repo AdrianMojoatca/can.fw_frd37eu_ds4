@@ -156,5 +156,11 @@ extern const NVFS_Entry_Name nvfs_validation_flag;
 
 /*==========================================================================*/
 
+
+#if defined(FW_DS4_BUILD)
+#include "core_contract_ds4_boot_handshake.h"
+#define nvfs_fw_data (*core_contract_ds4_boot_api_table_get()->nvfs_fw_data_addr)
+#endif
+
 #endif
 

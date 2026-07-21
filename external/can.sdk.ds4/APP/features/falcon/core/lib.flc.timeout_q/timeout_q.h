@@ -58,6 +58,13 @@ Boolean    timeout_q_remove( void *func_or_arg );
 
 /*==========================================================================*/
 
+
+#if defined(FW_DS4_BUILD)
+#include "core_contract_ds4_boot_handshake.h"
+#define timeout_q_insert(f, a, off, rp, rc) (core_contract_ds4_boot_api_table_get()->timeout_q_insert_fn((void*)(f),(void*)(a),(uint32_t)(off),(uint32_t)(rp),(uint32_t)(rc)))
+#define timeout_q_remove(p)                 (core_contract_ds4_boot_api_table_get()->timeout_q_remove_fn((void*)(p)))
+#endif
+
 #endif
 
 

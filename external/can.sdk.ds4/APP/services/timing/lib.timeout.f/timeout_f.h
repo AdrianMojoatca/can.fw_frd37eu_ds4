@@ -33,6 +33,13 @@ void	timeout_f_update (Timeout timeout, Exec_Func new_func) ;
 
 //--------------------------------------------------------------------------//
 
+
+#if defined(FW_DS4_BUILD)
+#include "core_contract_ds4_boot_handshake.h"
+#define timeout_f_create(to, func) \
+        ((Timeout)core_contract_ds4_boot_api_table_get()->timeout_f_create_fn((uint32_t)(to), (core_ds4_fn_void_ptr)(func)))
+#endif
+
 #endif
 
 

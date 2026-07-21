@@ -44,4 +44,14 @@ void    led_detect_err_all_state_skip   ( void );
 
 /*==========================================================================*/
 
- #endif
+ 
+#if defined(FW_DS4_BUILD)
+#include "core_contract_ds4_boot_handshake.h"
+#define led_detect_started()              (core_contract_ds4_boot_api_table_get()->led_detect_started_fn())
+#define led_detect_done()                 (core_contract_ds4_boot_api_table_get()->led_detect_done_fn())
+#define led_detect_in_progress()          (core_contract_ds4_boot_api_table_get()->led_detect_in_progress_fn())
+#define led_detect_err_can0()             (core_contract_ds4_boot_api_table_get()->led_detect_err_can0_fn())
+#define led_detect_err_invalid_ignition() (core_contract_ds4_boot_api_table_get()->led_detect_err_invalid_ignition_fn())
+#endif
+
+#endif

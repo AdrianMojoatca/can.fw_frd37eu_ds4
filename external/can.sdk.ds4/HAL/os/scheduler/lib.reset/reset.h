@@ -40,6 +40,12 @@ void reset_long_service (void) ;
 
 /*==========================================================================*/
 
+
+#if defined(FW_DS4_BUILD)
+#include "core_contract_ds4_boot_handshake.h"
+#define reset_register(f) (core_contract_ds4_boot_api_table_get()->reset_register_fn((void*)(f)))
+#endif
+
 #endif
 
 

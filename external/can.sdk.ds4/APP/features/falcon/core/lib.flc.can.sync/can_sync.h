@@ -62,6 +62,15 @@ Boolean can_sync_remove( Can_Dev_Id dev_id , void *func_or_arg );
 
 /*==========================================================================*/
 
+
+#if defined(FW_DS4_BUILD)
+#include "core_contract_ds4_boot_handshake.h"
+#define can_sync_init(dev, size)  (core_contract_ds4_boot_api_table_get()->can_sync_init_fn((uint32_t)(dev),(uint32_t)(size)))
+#define can_sync_add(dev, func, arg, id, soff, son, soffv, srep) \
+        (core_contract_ds4_boot_api_table_get()->can_sync_add_fn((uint32_t)(dev),(void*)(func),(void*)(arg),(uint32_t)(id),(uint32_t)(soff),(uint32_t)(son),(uint32_t)(soffv),(uint32_t)(srep)))
+#define can_sync_remove(dev, p)   (core_contract_ds4_boot_api_table_get()->can_sync_remove_fn((uint32_t)(dev),(void*)(p)))
+#endif
+
 #endif
 
 

@@ -132,4 +132,14 @@ NVFS_Status nvfs_size_is_valid(NVFS_Entry_Name const entry_name , UInt16 entry_s
 Nvram_Status nvram_init (Boolean do_format);
 
 
+
+#if defined(FW_DS4_BUILD)
+#include "core_contract_ds4_boot_handshake.h"
+#define nvfs_rd(name, dst)              (core_contract_ds4_boot_api_table_get()->nvfs_rd_fn((name),(dst)))
+#define nvfs_wr(name, buf)              (core_contract_ds4_boot_api_table_get()->nvfs_wr_fn((name),(buf)))
+#define nvfs_wr_create(name, buf, size) (core_contract_ds4_boot_api_table_get()->nvfs_wr_create_fn((name),(buf),(uint32_t)(size)))
+#define nvfs_delete(name)               (core_contract_ds4_boot_api_table_get()->nvfs_delete_fn((name)))
+#define nvram_usr_commit()              (core_contract_ds4_boot_api_table_get()->nvram_usr_commit_fn())
+#endif
+
 #endif

@@ -71,6 +71,14 @@ Boolean tsk_rs_invalid_state( void );
 
 /*==========================================================================*/
 
+
+#if defined(FW_DS4_BUILD)
+#include "core_contract_ds4_boot_handshake.h"
+#define tsk_rs_init()              (core_contract_ds4_boot_api_table_get()->tsk_rs_init_fn())
+#define tsk_rs_register(evt, func) (core_contract_ds4_boot_api_table_get()->tsk_rs_register_fn((uint32_t)(evt),(void*)(func)))
+#define tsk_rs_update_cfg(cfg)     (core_contract_ds4_boot_api_table_get()->tsk_rs_update_cfg_fn((uint32_t)(cfg)))
+#endif
+
 #endif
 
 

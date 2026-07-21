@@ -162,5 +162,11 @@ EXTERN_C_LEAVE
 
 /*==========================================================================*/
 
+
+#if defined(FW_DS4_BUILD)
+#include "core_contract_ds4_boot_handshake.h"
+#define wdog_v_force_reset(rt, src, line) (core_contract_ds4_boot_api_table_get()->wdog_v_force_reset_fn((uint32_t)(rt),(void*)(src),(uint32_t)(line)))
+#endif
+
 #endif
 

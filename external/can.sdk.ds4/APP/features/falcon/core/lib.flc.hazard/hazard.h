@@ -48,6 +48,13 @@ void hazard_status_update    ( Boolean instant_status );
 
 /*==========================================================================*/
 
+
+#if defined(FW_DS4_BUILD)
+#include "core_contract_ds4_boot_handshake.h"
+#define hazard_init(pulse, cfg)       (core_contract_ds4_boot_api_table_get()->hazard_init_fn((void*)(pulse),(uint32_t)(cfg)))
+#define hazard_status_update(instant) (core_contract_ds4_boot_api_table_get()->hazard_status_update_fn((uint32_t)(instant)))
+#endif
+
 #endif
 
 

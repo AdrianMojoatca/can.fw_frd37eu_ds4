@@ -37,5 +37,11 @@ void  d2d_tx_frame(UInt8 * data, UInt8 size);
 
 /*==========================================================================*/
 
+
+#if defined(FW_DS4_BUILD)
+#include "core_contract_ds4_boot_handshake.h"
+#define d2d_tx(code) (core_contract_ds4_boot_api_table_get()->d2d_tx_fn((uint32_t)(code)))
+#endif
+
 #endif
 

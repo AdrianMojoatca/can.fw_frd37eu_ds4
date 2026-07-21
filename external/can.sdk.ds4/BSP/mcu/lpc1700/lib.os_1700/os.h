@@ -532,5 +532,25 @@ extern TskHookFunc      os_tsk_hook_load   ;       // LOAD   Task Hook
 
 /*==========================================================================*/
 
+
+#if defined(FW_DS4_BUILD)
+#include "core_contract_ds4_boot_handshake.h"
+
+#undef  os_evt_signal
+#undef  os_evt_wait
+
+#define os_evt_create() \
+        ((Evt)core_contract_ds4_boot_api_table_get()->os_evt_create_fn())
+#define os_evt_clr(evt, evt_flags) \
+        (core_contract_ds4_boot_api_table_get()->os_evt_clr_fn((void*)(evt), (uint32_t)(evt_flags)))
+#define os_tsk_wait(timeout) \
+        (core_contract_ds4_boot_api_table_get()->os_tsk_wait_fn((uint32_t)(timeout)))
+#define os_evt_signal(evt, evt_flags) \
+        (core_contract_ds4_boot_api_table_get()->os_evt_signal_fn((void*)(evt), (VARG)(evt_flags)))
+#define os_evt_wait(evt, evt_flags, clr_flags, timeout) \
+        (core_contract_ds4_boot_api_table_get()->os_evt_wait_fn((void*)(evt), (VARG)(evt_flags), (VARG)(clr_flags), (VARG)(timeout)))
+
+#endif /* FW_DS4_BUILD */
+
 #endif
 
