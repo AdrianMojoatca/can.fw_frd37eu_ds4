@@ -1,0 +1,30 @@
+; *************************************************************
+; *** Scatter file for THIN FW DS4 (single-boot, DS5)       ***
+; *************************************************************
+;
+; Single-boot model: CORE (ngmm_task_main) boots the RTOS once and stays live,
+; then invokes the FW via the descriptor at 0x38000. The FW does NOT reboot, so:
+;   - NO stack region  (runs on CORE's task_main stack)
+;   - NO OS/C heap      (uses CORE's heaps)
+;   - NO vector table   (CORE owns the vector table / VTOR)
+; fw_ram_init copies RW / zeroes ZI manually (no __scatterload).
+;
+; FW flash window: 0x00038000 .. 0x0003FEFF (sector 21, 0x7F00 bytes).
+; RW_FW MUST match CORE's ER_FW_RAM_RESERVE (app.sct: 0x10004900, size 0x600).
+;----------------------------------------------------------------------------;
+
+LR_IROM_FW 0x00038000 0x00007F00
+{    ; FW flash window: 0x00038000 .. 0x0003FEFF
+  ER_IROM_FW 0x00038000 0x00007F00
+    {
+      *(FW_DESC, +First)        ; g_fw_descriptor -> base 0x38000
+      *.o (+RO)
+      *(InRoot$$Sections)
+      .ANY (+RO)
+    }
+
+  RW_FW 0x10004900 0x00000600   ; FW RW/ZI window; MUST match CORE ER_FW_RAM_RESERVE
+    {
+      .ANY (+RW +ZI)
+    }
+}

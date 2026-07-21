@@ -66,6 +66,18 @@ void fw_init( void )
 
 /*--------------------------------------------------------------------------*/
 
+/* DS5 single-boot identity hook. Called from ngmm_task_main (via the descriptor)
+   right after fw_ram_init, BEFORE CORE's config consumers (core_common1_init...).
+   The FW writes CORE's SINGLE config instance here (via the API-table config
+   accessors). S3/S5: empty stub -> CORE uses its own compile-time defaults.
+   S6: port the real vehicle-specific values (fw name/version, CAN, prog/status/
+   pts_ctl) from lib.config.ds4, modeled on the DB3 v1.1 fw_identity_init. */
+void fw_identity_init( void )
+{
+}
+
+/*--------------------------------------------------------------------------*/
+
 void fw_options_set( void )
 {
 	func_cfg.comfort = prog_retrieve_option(FEAT_COMFORT_CLOSURE);        
