@@ -631,5 +631,11 @@ void cmdq_process(UInt8 *pkt,UInt8 len);
 #define cmd_lut_insert_table1(arr, size, mode) (core_contract_ds4_boot_api_table_get()->cmd_lut_insert_table1_fn((void*)(arr),(uint32_t)(size),(uint32_t)(mode)))
 #endif
 
+#if defined(FW_DS4_BUILD)
+#include "core_contract_ds4_boot_handshake.h"
+/* DS4-added routing (not in DB3): cmd_q_insert */
+#define cmd_q_insert(args...) (core_contract_ds4_boot_api_table_get()->cmd_q_insert_fn(args))
+#endif /* FW_DS4_BUILD (DS4-added) */
+
 #endif
 

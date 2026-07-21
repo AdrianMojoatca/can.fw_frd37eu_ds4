@@ -68,6 +68,13 @@ Boolean can_per_remove     ( void *func_or_arg );
 #define can_per_init(size) (core_contract_ds4_boot_api_table_get()->can_per_init_fn((uint32_t)(size)))
 #endif
 
+#if defined(FW_DS4_BUILD)
+#include "core_contract_ds4_boot_handshake.h"
+/* DS4-added routing (not in DB3): can_per_add / can_per_remove */
+#define can_per_add(func,arg,off,per,cnt) (core_contract_ds4_boot_api_table_get()->can_per_add_fn((void*)(func),(void*)(arg),(uint32_t)(off),(uint32_t)(per),(uint32_t)(cnt)))
+#define can_per_remove(x) (core_contract_ds4_boot_api_table_get()->can_per_remove_fn((void*)(x)))
+#endif /* FW_DS4_BUILD (DS4-added) */
+
 #endif
 
 

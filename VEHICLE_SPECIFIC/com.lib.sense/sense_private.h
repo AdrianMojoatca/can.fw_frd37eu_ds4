@@ -101,5 +101,7 @@ extern Boolean sense_332_present;
 
 /*==========================================================================*/
 
+#include "d2d.h"   /* DS5: route d2d_tx via the API table (FW_DS4_BUILD) */
+
 #endif
 

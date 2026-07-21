@@ -305,6 +305,12 @@ Boolean  prog_set_option        (UInt8 option_nb, Feature_Name feature_name) ;
 #define prog_set_exit_callback(func) (core_contract_ds4_boot_api_table_get()->prog_set_exit_callback_fn((void*)(func)))
 #endif
 
+#if defined(FW_DS4_BUILD)
+#include "core_contract_ds4_boot_handshake.h"
+/* DS4-added routing (not in DB3): prog_retrieve_option */
+#define prog_retrieve_option(f) ((SInt8)core_contract_ds4_boot_api_table_get()->prog_retrieve_option_fn((uint32_t)(f)))
+#endif /* FW_DS4_BUILD (DS4-added) */
+
 #endif
 
 
