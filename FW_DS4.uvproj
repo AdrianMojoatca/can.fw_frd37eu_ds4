@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <Project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="project_proj.xsd">
 
   <SchemaVersion>1.0</SchemaVersion>
@@ -382,7 +382,6 @@
         </TargetArmAds>
       </TargetOption>
       <Groups>
-        
         <Group>
           <GroupName>com.inc.config.fw</GroupName>
           <Files>
@@ -462,6 +461,16 @@
               <FilePath>.\VEHICLE_SPECIFIC\lib.fw.ds4\lib.fw\fw_init.c</FilePath>
             </File>
             <File>
+              <FileName>fw_descriptor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\VEHICLE_SPECIFIC\lib.fw.ds4\lib.fw\fw_descriptor.c</FilePath>
+            </File>
+            <File>
+              <FileName>fw_boot.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\VEHICLE_SPECIFIC\lib.fw.ds4\lib.fw\fw_boot.c</FilePath>
+            </File>
+            <File>
               <FileName>fw_init_reset.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\VEHICLE_SPECIFIC\lib.fw.ds4\lib.fw\fw_init_reset.c</FilePath>
@@ -471,22 +480,8 @@
               <FileType>5</FileType>
               <FilePath>.\VEHICLE_SPECIFIC\lib.fw.ds4\lib.fw\fw_private.h</FilePath>
             </File>
-          <File>
-              <FileName>fw_descriptor.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\VEHICLE_SPECIFIC\lib.fw.ds4\lib.fw\fw_descriptor.c</FilePath>
-            </File><File>
-              <FileName>fw_boot.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\VEHICLE_SPECIFIC\lib.fw.ds4\lib.fw\fw_boot.c</FilePath>
-            </File></Files>
+          </Files>
         </Group>
-        
-        
-        
-        
-        
-        
         <Group>
           <GroupName>com.lib.detect</GroupName>
           <Files>
@@ -550,17 +545,12 @@
               <FileType>1</FileType>
               <FilePath>external\Core_Contract_SDK_DS4\core_contract_ds4_gpio_iface_shim.c</FilePath>
             </File>
-            
-            
-            
-            
-            
-            
-          <File>
+            <File>
               <FileName>core_contract_ds4_config_ptrs_fw.c</FileName>
               <FileType>1</FileType>
               <FilePath>external\Core_Contract_SDK_DS4\core_contract_ds4_config_ptrs_fw.c</FilePath>
-            </File></Files>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>com.lib.func</GroupName>
@@ -797,7 +787,6 @@
             </File>
           </Files>
         </Group>
-        
       </Groups>
     </Target>
   </Targets>
