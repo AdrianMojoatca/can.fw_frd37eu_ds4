@@ -447,10 +447,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>17</ColumnNumber>
+      <ColumnNumber>43</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>124</TopLine>
-      <CurrentLine>124</CurrentLine>
+      <CurrentLine>130</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>VEHICLE_SPECIFIC\com.lib.detect\detect_car_search.c</PathWithFileName>
       <FilenameWithoutPath>detect_car_search.c</FilenameWithoutPath>
@@ -2707,9 +2707,9 @@
         </Doc>
         <Doc>
           <Name>VEHICLE_SPECIFIC\com.lib.detect\detect_car_search.c</Name>
-          <ColumnNumber>17</ColumnNumber>
+          <ColumnNumber>43</ColumnNumber>
           <TopLine>124</TopLine>
-          <CurrentLine>124</CurrentLine>
+          <CurrentLine>130</CurrentLine>
         </Doc>
         <Doc>
           <Name>external\can.sdk.ds4\INC\cmall\core\inc.config_1700\config.h</Name>
