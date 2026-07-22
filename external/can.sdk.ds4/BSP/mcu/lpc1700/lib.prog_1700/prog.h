@@ -302,7 +302,11 @@ Boolean  prog_set_option        (UInt8 option_nb, Feature_Name feature_name) ;
 
 #if defined(FW_DS4_BUILD)
 #include "core_contract_ds4_boot_handshake.h"
-#define prog_set_exit_callback(func) (core_contract_ds4_boot_api_table_get()->prog_set_exit_callback_fn((void*)(func)))
+/* DS5: prog_set_exit_callback is a NO-OP on PLATFORM_933 (the CORE table slot is NULL
+   by design - see the shim). The DB3-ported redirect routed it to that NULL slot,
+   overriding the 933 no-op at line ~282 -> fw_init's call jumped to 0 (UsageFault,
+   ~2s after boot). Restore the no-op. */
+#define prog_set_exit_callback(func) ((void)(func))
 #endif
 
 #if defined(FW_DS4_BUILD)
