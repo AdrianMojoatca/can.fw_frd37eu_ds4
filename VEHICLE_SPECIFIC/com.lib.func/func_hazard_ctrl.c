@@ -44,7 +44,9 @@ void hazard_button_press( void )
     {
 		timeout_q_remove( (Timeout_Q_Func)hazard_button_release );
 		
-	    ATOMIC (gpio_iface_lights_on();  button_state = TRUE  );
+	    TRACE("\r M1: HAZARD BUTTON PRESS HERE");
+		
+		ATOMIC (gpio_iface_lights_on();  button_state = TRUE  );
 
         timeout_q_insert( (Timeout_Q_Func) hazard_button_release , NULL , FUNC_TIMEOUT_HAZARD_OUT, 1 , 1 ) ;
     }
@@ -55,9 +57,9 @@ void hazard_button_press( void )
 
 Timeout_Q_Status hazard_button_release( void )
 {
-	ATOMIC (gpio_iface_lights_off();  button_state = TRUE  );
+	ATOMIC (gpio_iface_lights_off();  button_state = FALSE );   /* was TRUE (copy-paste bug) -> blocked every pulse after the first; FALSE re-arms for the next PARKING ON */
 
-    return TIMEOUT_Q_COMPLETE ; 
+    return TIMEOUT_Q_COMPLETE ;
 }
 
 //--------------------------------------------------------------------------//
