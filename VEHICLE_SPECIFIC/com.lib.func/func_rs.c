@@ -56,6 +56,8 @@ void func_rs_gwr_on( void )
 	set_rs_gwr (TRUE);
 	
 	gpio_iface_rf_loop(TRUE);
+
+	
 }
 
 /*--------------------------------------------------------------------------*/
@@ -114,7 +116,7 @@ void func_rs_str_on( void )
                           
 
 	//if ( get_ign_status() /*&& (CAR_Gearbox==AUTOMATIC_GEARBOX)*/ ) // commented in vers. 1_14 - 26_09_2019	- custom only !!!!
-	if ( get_ign_status() && (CAR_Gearbox==AUTOMATIC_GEARBOX) ) // commented in vers. 1_14 - 26_09_2019	- custom only !!!!
+	if ( get_ign_status() /*&& (CAR_Gearbox==AUTOMATIC_GEARBOX)*/ ) // commented in vers. 1_14 - 26_09_2019	- custom only !!!!
 	//if ( get_ign_status() ) // vers. 1_12 - 26_09_2019
 
 	/* removed in vers. 1_17 */
@@ -248,7 +250,8 @@ void func_rs_gwr_off( Boolean do_shutdown )
 
 	gpio_iface_brake(FALSE);
 	
-	gpio_iface_rf_loop(FALSE);	
+	gpio_iface_rf_loop(FALSE);
+		
 	
 	do_rap();
 	    
