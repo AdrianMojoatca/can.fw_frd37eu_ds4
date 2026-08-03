@@ -104,7 +104,9 @@ void func_rs_str_on( void )
     UInt8   retry_count = 10    ;
 	
 	TRACE_FUNC("[%s]\n\r",__FUNCTION__); 
-        
+    
+	OUT_11(TRUE);     /* STARTER ON  - Violet force wire (OUT11) */
+	    
     brake_rpm_bypass_on:
     {
         sense_rs_can_brake_skip_enter();
@@ -137,6 +139,8 @@ void func_rs_str_off( void )
 
 	//if ( CAR_Gearbox ) 	// commented in vers. 1_12 - 26_09_2019	 - custom only !!!!
 
+	OUT_11(FALSE);    /* STARTER OFF - Violet force wire (OUT11) */
+
 	/* removed in vers. 1_17 */
 	
 	//if ( CAR_Gearbox )
@@ -144,6 +148,7 @@ void func_rs_str_off( void )
 		func_rs_pts_callback(FALSE);
 	}
     
+
     os_tsk_wait( 200 );
     
 	gpio_iface_brake(FALSE);
