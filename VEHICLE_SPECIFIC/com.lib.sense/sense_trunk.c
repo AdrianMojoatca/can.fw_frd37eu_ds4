@@ -63,8 +63,8 @@ void sense_trunk_3B3( Can_Msg *can_msg )
 	{
 		if ( get_ss_lock() )
 		{
-			//sense_rs_oem_trunk_can(TRUE); // .... facem trunk release
-			d2d_tx(0xDF); // .... facem trunk release
+			sense_rs_oem_trunk_can(TRUE); // .... facem trunk release (prin CORE via contract, nu d2d)
+			//d2d_tx(0xDF); // d2d fara efect pe DS4
 			timeout_stop(trunk_sense_delayed); // ... si oprim timer-ul
 			tr_to_started = FALSE;	// .. si permitem semnalarea directa pt. trunk status
 			tr_rel_active = FALSE;  // .... putem s-o luam de la capat

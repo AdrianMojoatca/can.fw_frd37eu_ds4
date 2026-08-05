@@ -142,8 +142,9 @@ void sense_rke_3C3( Can_Msg *can_msg )
 		{
 			if (get_ss_lock() )
 			{
-				d2d_tx(0xDF);
-				//sense_rs_oem_trunk_can(TRUE);
+				//d2d_tx(0xDF); // d2d fara efect pe DS4
+				sense_rs_oem_trunk_can(TRUE);
+				TRACE("\rTRUNK RELEASE HERE\r");
 			}
 		}
 		else 
